@@ -44,12 +44,13 @@
     }
   },
   "dependencies": {
+    "brace": "0.10.0",
     "electron-compile": "6.4.1",
     "electron-devtools-installer": "2.2.0",
     "react": "15.6.1",
+    "react-ace": "5.0.1",
     "react-dom": "15.6.1",
-    "react-electron-web-view": "2.0.1",
-    "react-hot-loader": "3.0.0-beta.7"
+    "react-electron-web-view": "2.0.1"
   },
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "6.24.1",

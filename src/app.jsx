@@ -38,11 +38,15 @@ export default class App extends React.Component {
 
   render() {
     return <div>
-      <File fileDir={ USER_DIRECTORY } fileName="stage.html" onChange={ this.handleChange } />
-      <File fileDir={ USER_DIRECTORY } fileName="app.css" onChange={ this.handleChange } />
-      <File fileDir={ USER_DIRECTORY } fileName="app.jsx" onChange={ this.handleChange } />
+      <div className="Editor">
+        <File fileDir={ USER_DIRECTORY } fileName="stage.html" onChange={ this.handleChange } />
+        <File fileDir={ USER_DIRECTORY } fileName="app.css" onChange={ this.handleChange } />
+        <File fileDir={ USER_DIRECTORY } fileName="app.jsx" onChange={ this.handleChange } />
+      </div>
 
-      <WebView nodeintegration onDidFailLoad={ this.failLoad } onConsoleMessage={ this.consoleMessage } src="../user/stage.html" ref={ (ref) => this.rendered = ref } />
+      <div className="Browser">
+        <WebView nodeintegration onDidFailLoad={ this.failLoad } onConsoleMessage={ this.consoleMessage } src="../user/stage.html" ref={ (ref) => this.rendered = ref } />
+      </div>
     </div>
   }
 }
