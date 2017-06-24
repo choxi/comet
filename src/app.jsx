@@ -38,10 +38,11 @@ export default class App extends React.Component {
 
   render() {
     return <div>
+      <File fileDir={ USER_DIRECTORY } fileName="stage.html" onChange={ this.handleChange } />
       <File fileDir={ USER_DIRECTORY } fileName="app.css" onChange={ this.handleChange } />
       <File fileDir={ USER_DIRECTORY } fileName="app.jsx" onChange={ this.handleChange } />
 
-      <WebView nodeintegration onDidFailLoad={ this.failLoad } onConsoleMessage={ this.consoleMessage } src="../user/index.html" ref={ (ref) => this.rendered = ref } />
+      <WebView nodeintegration onDidFailLoad={ this.failLoad } onConsoleMessage={ this.consoleMessage } src="../user/stage.html" ref={ (ref) => this.rendered = ref } />
     </div>
   }
 }
