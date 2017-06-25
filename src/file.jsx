@@ -9,6 +9,7 @@ import 'brace/mode/html'
 import 'brace/mode/css'
 import 'brace/mode/jsx'
 import 'brace/theme/textmate'
+import 'brace/theme/monokai'
 
 export default class File extends React.Component {
   constructor(props) {
@@ -34,12 +35,17 @@ export default class File extends React.Component {
   }
 
   render() {
-    return <AceEditor
+    return <div className="File">
+      <div className="File__name">{ this.props.fileName }</div>
+      <AceEditor
         mode={ this.state.mode }
-        theme="textmate"
+        theme="monokai"
         editorProps={{$blockScrolling: true}}
+        showPrintMargin={ false }
+        showGutter={ true }
         value={ this.state.body.toString() }
         onChange={ this.handleChange }
       />
+    </div>
   }
 }

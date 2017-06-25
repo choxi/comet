@@ -39,9 +39,9 @@ export default class App extends React.Component {
   render() {
     return <div>
       <div className="Editor">
-        <File fileDir={ USER_DIRECTORY } fileName="stage.html" onChange={ this.handleChange } />
-        <File fileDir={ USER_DIRECTORY } fileName="app.css" onChange={ this.handleChange } />
         <File fileDir={ USER_DIRECTORY } fileName="app.jsx" onChange={ this.handleChange } />
+        <File fileDir={ USER_DIRECTORY } fileName="app.css" onChange={ this.handleChange } />
+        <File fileDir={ USER_DIRECTORY } fileName="stage.html" onChange={ this.handleChange } />
       </div>
 
       <div className="Browser">

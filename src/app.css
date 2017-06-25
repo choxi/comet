@@ -22,3 +22,22 @@ html, body, [data-reactroot] {
   width: 50%;
   float: right;
 }
+
+.ace_editor {
+  width: 100% !important;
+}
+
+.File {
+  background: #2F3129;
+}
+
+.File__name {
+  background: #272822;
+  background: #2F3129;
+  margin-left: 48px;
+  padding: 10px;
+  color: white;
+  text-transform: uppercase;
+  font-family: Helvetica;
+  font-weight: bold;
+}
