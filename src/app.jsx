@@ -12,7 +12,7 @@ export default class App extends React.Component {
   }
 
   handleChange() {
-    this.throttle(1000, () => this.rendered.reload())
+    this.throttle(200, () => this.rendered.reload())
   }
 
   throttle(interval, fn) {
