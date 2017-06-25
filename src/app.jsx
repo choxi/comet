@@ -18,7 +18,7 @@ export default class App extends React.Component {
   throttle(interval, fn) {
     this.throttles = this.throttles || {}
     let throttled  = (this.throttles[fn] || false)
-  
+
     if(!throttled) {
       this.throttles[fn] = true
       setTimeout(() => {
