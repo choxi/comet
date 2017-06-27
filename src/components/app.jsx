@@ -45,7 +45,13 @@ export default class App extends React.Component {
       </div>
 
       <div className="Browser">
-        <WebView nodeintegration onDidFailLoad={ this.failLoad } onConsoleMessage={ this.consoleMessage } src="../user/stage.html" ref={ (ref) => this.rendered = ref } />
+        <WebView 
+          nodeintegration 
+          onDidFailLoad={ this.failLoad } 
+          onConsoleMessage={ this.consoleMessage } 
+          src="../user/stage.html" 
+          ref={ (ref) => this.rendered = ref } 
+        />
       </div>
     </div>
   }

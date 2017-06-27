@@ -1,16 +1,59 @@
-import { app, BrowserWindow } from 'electron';
-import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer';
-import { enableLiveReload } from 'electron-compile';
+import { app, BrowserWindow, Menu } from 'electron'
+import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer'
+import { enableLiveReload } from 'electron-compile'
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow;
+let mainWindow
 
-const isDevMode = process.execPath.match(/[\\/]electron/);
+const isDevMode = process.execPath.match(/[\\/]electron/)
 
-if (isDevMode) enableLiveReload({strategy: 'react-hmr'});
+if (isDevMode) enableLiveReload({strategy: 'react-hmr'})
 
 const createWindow = async () => {
+  // Menubar template
+  const template = [
+    {
+      label: 'File',
+      submenu: [
+        {
+          label: 'New', accelerator: 'CmdOrCtrl+N', click: (item, focusedWindow) => {
+            let newWindow = new BrowserWindow({ width: 800, height: 600 })
+            newWindow.loadURL(`file://${__dirname}/new.html`)
+          }
+        }
+      ]
+    },
+    {
+      label: "Edit",
+      submenu: [
+          { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+          { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+          { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+          { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
+      ]
+    },
+    {
+      label: "Developer",
+      submenu: [
+        {
+          label: "Refresh", accelerator: 'CmdOrCtrl+R', click: (item, focusedWindow) => {
+            focusedWindow.webContents.reload()
+          }
+        },
+        {
+          label: "Developer Tools", accelerator: 'CmdOrCtrl+Option+I', click: (item, focusedWindow) => {
+            focusedWindow.webContents.toggleDevTools()
+          }
+        }
+      ]
+    }
+  ]
+
+  // Create the menubar
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
@@ -56,6 +99,3 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
