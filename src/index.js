@@ -1,4 +1,4 @@
-import { app, BrowserWindow, Menu } from 'electron'
+import { app, BrowserWindow, Menu, ipcMain } from 'electron'
 import installExtension, { REACT_DEVELOPER_TOOLS } from 'electron-devtools-installer'
 import { enableLiveReload } from 'electron-compile'
 
@@ -54,6 +54,19 @@ const createWindow = async () => {
   const menu = Menu.buildFromTemplate(template)
   Menu.setApplicationMenu(menu)
 
+  ipcMain.on("open-component", (event, params) => {
+    let dialog = BrowserWindow.fromWebContents(event.sender)
+    let win    = new BrowserWindow({ width: 800, height: 600 })
+
+    win.loadURL(`file://${__dirname}/index.html`)
+
+    win.webContents.on('did-finish-load', () => {
+      win.webContents.send('open', params)
+    })
+
+    dialog.close()
+  })
+
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
@@ -66,7 +79,6 @@ const createWindow = async () => {
   // Open the DevTools.
   if (isDevMode) {
     await installExtension(REACT_DEVELOPER_TOOLS);
-    mainWindow.webContents.openDevTools();
   }
 
   // Emitted when the window is closed.
