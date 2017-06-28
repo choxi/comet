@@ -2,8 +2,8 @@ import React from 'react'
 import WebView from 'react-electron-web-view'
 import ReactDOM from 'react-dom'
 import File from './file.jsx'
-
-const USER_DIRECTORY = "./user"
+import { ipcRenderer } from 'electron'
+import Path from 'path'
 
 export default class App extends React.Component {
   constructor() {
@@ -28,6 +28,14 @@ export default class App extends React.Component {
     }
   }
 
+  directory() {
+    return Path.resolve("user", this.props.name)
+  }
+
+  stagePath() {
+    return Path.join(this.directory(), "stage.html")
+  }
+
   failLoad(e) {
     console.log(e)
   }
@@ -39,9 +47,9 @@ export default class App extends React.Component {
   render() {
     return <div>
       <div className="Editor">
-        <File fileDir={ USER_DIRECTORY } fileName="app.jsx" onChange={ this.handleChange } />
-        <File fileDir={ USER_DIRECTORY } fileName="app.css" onChange={ this.handleChange } />
-        <File fileDir={ USER_DIRECTORY } fileName="stage.html" onChange={ this.handleChange } />
+        <File fileDir={ this.directory() } fileName={ this.props.name + ".jsx" } onChange={ this.handleChange } />
+        <File fileDir={ this.directory() } fileName={ this.props.name + ".css" } onChange={ this.handleChange } />
+        <File fileDir={ this.directory() } fileName="stage.html" onChange={ this.handleChange } />
       </div>
 
       <div className="Browser">
@@ -49,7 +57,7 @@ export default class App extends React.Component {
           nodeintegration 
           onDidFailLoad={ this.failLoad } 
           onConsoleMessage={ this.consoleMessage } 
-          src="../user/stage.html" 
+          src={ this.stagePath() }
           ref={ (ref) => this.rendered = ref } 
         />
       </div>

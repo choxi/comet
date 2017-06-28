@@ -15,6 +15,13 @@
     import ReactDOM from 'react-dom'
     import App from './components/app'
 
-    ReactDOM.render(<App />, document.getElementById('App'))
+    let name
+    let params = new URLSearchParams(window.location.search)
+    if(params.has("name"))
+      name = params.get("name")
+    else
+      name = "app"
+
+    ReactDOM.render(<App name={ name }/>, document.getElementById('App'))
   </script>
 </html>

@@ -20,9 +20,12 @@ html, body, [data-reactroot] {
 
 .Browser {
   width: 50%;
-  height: 100%;
   float: right;
   box-shadow: inset 1px 0 4px 0 rgba(0,0,0,0.25);
+}
+
+.Browser, .Browser div, .Browser div webview {
+  height: 100%;
 }
 
 .ace_editor {

@@ -58,12 +58,7 @@ const createWindow = async () => {
     let dialog = BrowserWindow.fromWebContents(event.sender)
     let win    = new BrowserWindow({ width: 800, height: 600 })
 
-    win.loadURL(`file://${__dirname}/index.html`)
-
-    win.webContents.on('did-finish-load', () => {
-      win.webContents.send('open', params)
-    })
-
+    win.loadURL(`file://${__dirname}/index.html?name=${params.name}`)
     dialog.close()
   })
 
