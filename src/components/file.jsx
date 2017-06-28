@@ -23,7 +23,8 @@ export default class File extends React.Component {
     if(fs.existsSync(this.path())) {
       this.state.body = fs.readFileSync(this.path())
     } else {
-      fs.writeFileSync(this.path(), "")
+      let defaultValue = this.props.defaultValue || ""
+      fs.writeFileSync(this.path(), defaultValue)
     }
   }
 

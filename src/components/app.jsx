@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import File from './file.jsx'
 import { ipcRenderer } from 'electron'
 import Path from 'path'
+import fs from 'fs'
 
 export default class App extends React.Component {
   constructor() {
@@ -45,20 +46,41 @@ export default class App extends React.Component {
   }
 
   render() {
+    let fileDefaults = {
+      component:  fs.readFileSync("./src/template/component.jsx"),
+      stylesheet: fs.readFileSync("./src/template/component.css"),
+      stage:      fs.readFileSync("./src/template/stage.html")
+    }
+
     return <div>
       <div className="Editor">
-        <File fileDir={ this.directory() } fileName={ this.props.name + ".jsx" } onChange={ this.handleChange } />
-        <File fileDir={ this.directory() } fileName={ this.props.name + ".css" } onChange={ this.handleChange } />
-        <File fileDir={ this.directory() } fileName="stage.html" onChange={ this.handleChange } />
+        <File
+          defaultValue={ fileDefaults.component }
+          fileDir={ this.directory() }
+          fileName={ this.props.name + ".jsx" }
+          onChange={ this.handleChange }
+        />
+        <File
+          defaultValue={ fileDefaults.stylesheet }
+          fileDir={ this.directory() }
+          fileName={ this.props.name + ".css" }
+          onChange={ this.handleChange }
+        />
+        <File
+          defaultValue={ fileDefaults.stage }
+          fileDir={ this.directory() }
+          fileName="stage.html"
+          onChange={ this.handleChange }
+        />
       </div>
 
       <div className="Browser">
-        <WebView 
-          nodeintegration 
-          onDidFailLoad={ this.failLoad } 
-          onConsoleMessage={ this.consoleMessage } 
+        <WebView
+          nodeintegration
+          onDidFailLoad={ this.failLoad }
+          onConsoleMessage={ this.consoleMessage }
           src={ this.stagePath() }
-          ref={ (ref) => this.rendered = ref } 
+          ref={ (ref) => this.rendered = ref }
         />
       </div>
     </div>
