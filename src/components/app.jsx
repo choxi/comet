@@ -5,6 +5,11 @@ import File from './file.jsx'
 import { ipcRenderer } from 'electron'
 import Path from 'path'
 import fs from 'fs'
+import Handlebars from 'handlebars'
+
+Handlebars.registerHelper('capitalize', (text) => {
+  return text.charAt(0).toUpperCase() + text.slice(1) 
+})
 
 export default class App extends React.Component {
   constructor() {
@@ -13,7 +18,7 @@ export default class App extends React.Component {
   }
 
   handleChange() {
-    this.throttle(200, () => this.rendered.reload())
+    this.throttle(1000, () => this.rendered.reload())
   }
 
   throttle(interval, fn) {
@@ -46,28 +51,34 @@ export default class App extends React.Component {
   }
 
   render() {
-    let fileDefaults = {
+    let templates = { 
       component:  fs.readFileSync("./src/template/component.jsx"),
       stylesheet: fs.readFileSync("./src/template/component.css"),
       stage:      fs.readFileSync("./src/template/stage.html")
     }
 
+    let context = { name: this.props.name }
+    for(let name in templates) {
+      let template = templates[name]
+      templates[name] = Handlebars.compile(template.toString())(context)
+    }
+
     return <div>
       <div className="Editor">
         <File
-          defaultValue={ fileDefaults.component }
+          defaultValue={ templates.component }
           fileDir={ this.directory() }
           fileName={ this.props.name + ".jsx" }
           onChange={ this.handleChange }
         />
         <File
-          defaultValue={ fileDefaults.stylesheet }
+          defaultValue={ templates.stylesheet }
           fileDir={ this.directory() }
           fileName={ this.props.name + ".css" }
           onChange={ this.handleChange }
         />
         <File
-          defaultValue={ fileDefaults.stage }
+          defaultValue={ templates.stage }
           fileDir={ this.directory() }
           fileName="stage.html"
           onChange={ this.handleChange }
@@ -79,6 +90,7 @@ export default class App extends React.Component {
           nodeintegration
           onDidFailLoad={ this.failLoad }
           onConsoleMessage={ this.consoleMessage }
+          onCrashed={ event => console.log(event) }
           src={ this.stagePath() }
           ref={ (ref) => this.rendered = ref }
         />

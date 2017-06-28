@@ -47,6 +47,7 @@
     "brace": "0.10.0",
     "electron-compile": "6.4.1",
     "electron-devtools-installer": "2.2.0",
+    "handlebars": "4.0.10",
     "react": "15.6.1",
     "react-ace": "5.0.1",
     "react-dom": "15.6.1",

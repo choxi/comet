@@ -19,12 +19,15 @@ export default class File extends React.Component {
     this.state = { body: "", mode: mode }
     this.handleChange = this.handleChange.bind(this)
 
-    if(!fs.existsSync(this.props.fileDir)) fs.mkdirSync(this.props.fileDir)
-    if(fs.existsSync(this.path())) {
+    if(!fs.existsSync(this.props.fileDir)) 
+      fs.mkdirSync(this.props.fileDir)
+    
+    if(fs.existsSync(this.path()))
       this.state.body = fs.readFileSync(this.path())
-    } else {
+    else {
       let defaultValue = this.props.defaultValue || ""
       fs.writeFileSync(this.path(), defaultValue)
+      this.state.body  = defaultValue
     }
   }
 
