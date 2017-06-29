@@ -53,6 +53,13 @@ export default class App extends React.Component {
     console.log(e.message)
   }
 
+  toggleDevTools() {
+    if(this.rendered.isDevToolsOpened())
+      this.rendered.closeDevTools()
+    else
+      this.rendered.openDevTools()
+  }
+
   render() {
     let templates = { 
       component:  fs.readFileSync("./src/template/component.jsx"),
@@ -89,6 +96,7 @@ export default class App extends React.Component {
       </div>
 
       <div className="Browser">
+        <a onClick={ () => this.toggleDevTools() }>Inspector</a>
         <WebView
           nodeintegration
           onDidFailLoad={ this.failLoad }
