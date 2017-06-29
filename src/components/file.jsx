@@ -53,8 +53,10 @@ export default class File extends React.Component {
         showGutter={ true }
         value={ this.state.body.toString() }
         onChange={ this.handleChange }
-        minLines={ 20 }
+        minLines={ 10 }
         maxLines={ 60 }
+        tabSize={ 2 }
+        useSoftTabs={ true }
       />
     </div>
   }

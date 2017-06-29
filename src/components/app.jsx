@@ -15,14 +15,17 @@ export default class App extends React.Component {
   constructor() {
     super()
     this.handleChange = this.handleChange.bind(this)
+    this.throttles    = {}
   }
 
   handleChange() {
-    this.throttle(1000, () => this.rendered.reload())
+    this.throttle(2000, () => {
+      console.log("reload")
+      this.rendered.reload()
+    })
   }
 
   throttle(interval, fn) {
-    this.throttles = this.throttles || {}
     let throttled  = (this.throttles[fn] || false)
 
     if(!throttled) {

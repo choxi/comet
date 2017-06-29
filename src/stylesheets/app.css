@@ -22,6 +22,8 @@ html, body, [data-reactroot] {
   width: 50%;
   float: right;
   box-shadow: inset 1px 0 4px 0 rgba(0,0,0,0.25);
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .Browser, .Browser div, .Browser div webview {
