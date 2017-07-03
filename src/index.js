@@ -56,7 +56,7 @@ const createWindow = async () => {
 
   ipcMain.on("open-component", (event, params) => {
     let dialog = BrowserWindow.fromWebContents(event.sender)
-    let win    = new BrowserWindow({ width: 800, height: 600 })
+    let win    = new BrowserWindow({ width: 800, height: 600, title: params.name })
 
     win.loadURL(`file://${__dirname}/index.html?name=${params.name}`)
     dialog.close()
@@ -66,6 +66,7 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    title: "app"
   });
 
   // and load the index.html of the app.
