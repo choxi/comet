@@ -48,14 +48,17 @@
     "babel-loader": "7.1.1",
     "babel-preset-env": "1.5.2",
     "brace": "0.10.0",
+    "css-loader": "0.28.4",
     "electron-compile": "6.4.1",
     "electron-devtools-installer": "2.2.0",
+    "extract-text-webpack-plugin": "2.1.2",
     "handlebars": "4.0.10",
     "react": "15.6.1",
     "react-ace": "5.0.1",
     "react-dom": "15.6.1",
     "react-electron-web-view": "2.0.1",
     "react-highlight": "0.10.0",
+    "style-loader": "0.18.2",
     "webpack": "3.0.0"
   },
   "devDependencies": {
