@@ -2,14 +2,15 @@
   <head>
   </head>
   <body>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/app.css" />
     <div id="NewDialog"></div>
   </body>
 
   <script type="text/jsx">
     import React from 'react'
     import ReactDOM from 'react-dom'
-    import NewDialog from './components/new_dialog.jsx'
+    import NewDialog from './components/new_dialog/new_dialog.jsx'
 
-    ReactDOM.render(<NewDialog />, document.getElementById("NewDialog"))
+    ReactDOM.render(<div><NewDialog /></div>, document.getElementById("NewDialog"))
   </script>
 </html>

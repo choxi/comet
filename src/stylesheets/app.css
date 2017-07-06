@@ -1,3 +1,5 @@
+@import url("../components/new_dialog/new_dialog.css");
+
 html, body, [data-reactroot] {
   padding: 0;
   margin: 0;

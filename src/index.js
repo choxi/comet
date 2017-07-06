@@ -63,14 +63,8 @@ const createWindow = async () => {
   })
 
   // Create the browser window.
-  mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
-    title: "app"
-  });
-
-  // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
+  mainWindow = new BrowserWindow({ width: 800, height: 600 })
+  mainWindow.loadURL(`file://${__dirname}/new.html`)
 
   // Open the DevTools.
   if (isDevMode) {
