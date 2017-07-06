@@ -18,7 +18,7 @@ const createWindow = async () => {
       submenu: [
         {
           label: 'New', accelerator: 'CmdOrCtrl+N', click: (item, focusedWindow) => {
-            let newWindow = new BrowserWindow({ width: 800, height: 600 })
+            let newWindow = new BrowserWindow({ width: 800, height: 600, frame: false })
             newWindow.loadURL(`file://${__dirname}/new.html`)
           }
         }
@@ -63,7 +63,7 @@ const createWindow = async () => {
   })
 
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 800, height: 600 })
+  mainWindow = new BrowserWindow({ width: 800, height: 600, frame: false })
   mainWindow.loadURL(`file://${__dirname}/new.html`)
 
   // Open the DevTools.

@@ -27,11 +27,12 @@ export default class NewDialog extends React.Component {
     })
 
     return <div className="NewDialog">
-      <h1>New Component</h1>
+      <h1>Comet</h1>
+      <h2>New Component</h2>
       <input type="text" ref={ (node) => this.nameInput = node } />
       <button onClick={ () => this.createComponent() }>Create</button>
 
-      <h1>Recently Opened</h1>
+      <h2>Recently Opened</h2>
       <ul>
         { componentsPartial }
       </ul>

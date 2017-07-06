@@ -3,3 +3,11 @@
   color: white;
   padding: 40px;
 }
+
+.NewDialog h1 {
+  text-align: center;
+}
+
+.NewDialog ul li {
+  cursor: pointer;
+}
