@@ -58,6 +58,7 @@
     "react-dom": "15.6.1",
     "react-electron-web-view": "2.0.1",
     "react-highlight": "0.10.0",
+    "react-spin": "0.6.2",
     "style-loader": "0.18.2",
     "webpack": "3.0.0"
   },
