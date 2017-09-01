@@ -8,7 +8,8 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "package": "webpack"
   },
   "keywords": [],
   "author": "Choxi",
@@ -67,6 +68,7 @@
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "6.24.1",
     "babel-plugin-transform-es2015-classes": "6.24.1",
+    "babel-plugin-transform-es3-property-literals": "6.22.0",
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
     "electron-prebuilt-compile": "1.6.11"

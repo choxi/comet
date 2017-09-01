@@ -1,11 +1,10 @@
 const path              = require("path")
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-
 let extractTextPlugin   = ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }) 
 
 module.exports = {
   entry: {
-    index: "./user/index.js",
+    skeleton: "./user/skeleton.js",
   },
   output: {
     path: path.resolve('./dist'),
