@@ -10,12 +10,16 @@ module.exports = {
     path: path.resolve('./dist'),
     filename: "[name].js",
     library: "skeleton",
-    libraryTarget: "umd"
+    libraryTarget: "commonjs2"
+  },
+  externals: {
+    react: true
   },
   module: {
     rules: [
       {
         test: /\.(jsx|js)$/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
